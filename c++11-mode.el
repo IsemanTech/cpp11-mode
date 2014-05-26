@@ -22,7 +22,8 @@
 ;; the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 ;; Boston, MA 02111-1307, USA.
 
-;;; Code:
+(require 'cc-mode)
+(eval-when-compile (require 'cl)) ;; work around cc-mode bug
 
 (eval-and-compile
   (c-add-language 'c++11-mode 'c++-mode))
