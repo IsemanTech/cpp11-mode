@@ -1,5 +1,4 @@
-;;; c++11-mode.el
-;;; Major mode for editing C++ code with support for the C++11 standard.
+;;; c++11-mode.el --- Major mode for editing C++11 code
 
 ;; Author: Roy Crihfield
 ;; Maintainer: Roy
@@ -22,6 +21,8 @@
 ;; along with this program; see the file COPYING.  If not, write to
 ;; the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 ;; Boston, MA 02111-1307, USA.
+
+;;; Code:
 
 (eval-and-compile
   (c-add-language 'c++11-mode 'c++-mode))
@@ -84,3 +85,7 @@ Key bindings:
   (easy-menu-add c-c++-menu)
   (c-run-mode-hooks 'c-mode-common-hook 'c++11-mode-hook)
   (c-update-modeline))
+
+(provide 'c++11-mode)
+
+;;; c++11-mode.el ends here
