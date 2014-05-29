@@ -1,4 +1,4 @@
-;;; c++11-mode.el --- Major mode for editing ISO C++11 code.
+;;; c++11-mode.el --- Major mode for editing C++11 code
 
 ;; Name: c++11
 ;; Author: Roy Crihfield
@@ -43,7 +43,9 @@
 
 (eval-when-compile
   (require 'cc-langs)
-  (require 'cc-fonts))
+  (require 'cc-fonts)
+  (require 'cl)) ;; work around cc-mode bug
+
 
 (eval-and-compile
   (c-add-language 'c++11-mode 'c++-mode))
@@ -150,6 +152,8 @@ need for `c++11-font-lock-extra-types'.")
 (easy-menu-define c-c++11-menu c++11-mode-map "C++ Mode Commands"
 		  (cons "C++" (c-lang-const c-mode-menu c++11)))
 
+;; TODO: context-dependent keywords: final, override
+
 ;;;###autoload
 (define-derived-mode c++11-mode c++-mode "C++"
   "Major mode for editing C++ code with support for the C++11 standard.
@@ -172,10 +176,11 @@ Key bindings:
         abbrev-mode t)
   (use-local-map c++11-mode-map)
   (c-init-language-vars c++11-mode)
-  (c-make-macro-with-semi-re)
   (c-common-init 'c++11-mode)
   (easy-menu-add c-c++11-menu)
   (c-run-mode-hooks 'c-mode-common-hook 'c++11-mode-hook)
   (c-update-modeline))
+
+(provide 'c++11-mode)
 
 ;;; c++11-mode.el ends here
